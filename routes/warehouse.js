@@ -24,7 +24,11 @@ router.post('/' , async (req,res) => {
         name: req.body.name,
         vietnameseName: req.body.vietnameseName,
         quantity: req.body.quantity,
-        price: req.body.price
+        price: req.body.price,
+        supplier: req.body.supplier,
+        from: req.body.from,
+        desc: req.body.desc,
+        img: req.body.img,
     })
 
     try {
@@ -48,6 +52,18 @@ router.patch('/:id' ,getProduct, async (req,res) => {
     }
     if(req.body.vietnameseName != null) {
         res.product.vietnameseName = req.body.vietnameseName
+    }
+    if(req.body.supplier != null){
+        res.product.supplier = req.body.supplier
+    }
+    if(req.body.from != null){
+        res.product.from = req.body.from
+    }
+    if(req.body.desc != null){
+        res.product.desc = req.body.desc
+    }
+    if(req.body.img != null){
+        res.product.img = req.body.img
     }
     try {
         const updatedProduct = await res.product.save()
